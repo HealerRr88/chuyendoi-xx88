@@ -519,6 +519,19 @@ a {
     height: auto;
 }
 
+.link-label {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  color: #56ade7;
+  font-weight: bold;
+  font-size: 1rem;
+  pointer-events: auto;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
 @media (max-width: 576px) {
   .speed-meter {
     font-size: 1rem;
@@ -534,3 +547,10 @@ a {
     min-height: 48px;
   }
 }
+
+@media (max-width: 576px) {
+    .link-label {
+      bottom: 8%;
+      font-size: 0.95rem;
+    }
+  }
