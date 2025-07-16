@@ -522,7 +522,7 @@ a {
 .link-label {
   position: absolute;
   left: 50%;
-  bottom: 6%;
+  bottom: 0%;
   transform: translateX(-50%);
   color: #56ade7;
   font-weight: bold;
@@ -530,6 +530,10 @@ a {
   pointer-events: auto;
   white-space: nowrap;
   text-decoration: none;
+  background: #fff;
+  border-radius: 8px;
+  padding: 14px 50px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 @media (max-width: 576px) {
@@ -550,7 +554,12 @@ a {
 
 @media (max-width: 576px) {
     .link-label {
-      bottom: 8%;
-      font-size: 0.95rem;
+        padding: 8px 20px;
+        font-size: 0.95rem;
+        bottom: 4%;
+        min-width: 80px;
+        max-width: 90vw;
+        white-space: normal;
+        text-align: center;
+      }
     }
-  }
