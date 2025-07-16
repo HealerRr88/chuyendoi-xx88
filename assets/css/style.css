@@ -563,3 +563,46 @@ a {
         text-align: center;
       }
     }
+
+/* QR App Download Section */
+.qr-app-row {
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 12px;
+}
+.qr-app-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 120px;
+  max-width: 220px;
+}
+.qr-app-col img.qr-img {
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+}
+.qr-app-col a img {
+  max-width: 120px;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 576px) {
+  .qr-app-row {
+    gap: 12px;
+  }
+  .qr-app-col {
+    min-width: 0;
+    max-width: 100%;
+    padding: 0 2px;
+  }
+  .qr-app-col img.qr-img {
+    max-width: 48vw;
+  }
+  .qr-app-col a img {
+    max-width: 32vw;
+  }
+}
