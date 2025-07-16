@@ -48,8 +48,9 @@
                                 <div class="col-4 col-md-2 pb-4">
                                     <div class="item-link">
                                         <a href="https://xx8844.com" target="_blank" >
-                                            <div class="icon">
-                                                <img src="./assets/images/item-speed.png" class="w-100" alt="RR88">
+                                            <div class="icon" style="position: relative;">
+                                                <img src="./assets/images/item-speed-2.png" class="w-100" alt="RR88">
+                                                <div class="speed-meter">--- ms</div>
                                             </div>  
                                         </a>
                                         <a href="https://xx8844.com" target="_blank" class="btn bg-light fw-bold w-100 mt-2 btn-link">
@@ -60,8 +61,9 @@
                                 <div class="col-4 col-md-2 pb-4">
                                     <div class="item-link">
                                         <a href="https://xx88a.com" target="_blank" >
-                                        <div class="icon">
-                                            <img src="./assets/images/item-speed.png" class="w-100" alt="RR88">
+                                        <div class="icon" style="position: relative;">
+                                            <img src="./assets/images/item-speed-2.png" class="w-100" alt="RR88">
+                                            <div class="speed-meter">--- ms</div>
                                         </div>
                                         </a>
                                          <a href="https://xx88a.com" target="_blank" class="btn bg-light fw-bold w-100 mt-2 btn-link">
@@ -72,8 +74,9 @@
                                 <div class="col-4 col-md-2 pb-4">
                                     <div class="item-link">
                                         <a href="https://xx88d.com" target="_blank" >
-                                        <div class="icon">
-                                            <img src="./assets/images/item-speed.png" class="w-100" alt="RR88">
+                                        <div class="icon" style="position: relative;">
+                                            <img src="./assets/images/item-speed-2.png" class="w-100" alt="RR88">
+                                            <div class="speed-meter">--- ms</div>
                                         </div>
                                         </a>
                                           <a href="https://xx88d.com" target="_blank" class="btn bg-light fw-bold w-100 mt-2 btn-link">
@@ -84,8 +87,9 @@
                                 <div class="col-4 col-md-2 ">
                                     <div class="item-link">
                                         <a href="https://xx88e.com" target="_blank" >
-                                        <div class="icon">
-                                            <img src="./assets/images/item-speed.png" class="w-100" alt="RR88">
+                                        <div class="icon" style="position: relative;">
+                                            <img src="./assets/images/item-speed-2.png" class="w-100" alt="RR88">
+                                            <div class="speed-meter">--- ms</div>
                                         </div>
                                         </a>
                                         <a href="https://xx88e.com" target="_blank" class="btn bg-light fw-bold w-100 mt-2 btn-link">
@@ -96,8 +100,9 @@
                                 <div class="col-4 col-md-2 ">
                                     <div class="item-link">
                                         <a href="https://xx88i.com" target="_blank" >
-                                        <div class="icon">
-                                            <img src="./assets/images/item-speed.png" class="w-100" alt="RR88">
+                                        <div class="icon" style="position: relative;">
+                                            <img src="./assets/images/item-speed-2.png" class="w-100" alt="RR88">
+                                            <div class="speed-meter">--- ms</div>
                                         </div>
                                         </a>
                                          <a href="https://xx88i.com" target="_blank" class="btn bg-light fw-bold w-100 mt-2 btn-link">
@@ -108,8 +113,9 @@
                                 <div class="col-4 col-md-2 ">
                                     <div class="item-link">
                                         <a href="https://xx88j.com" target="_blank" >
-                                        <div class="icon">
-                                            <img src="./assets/images/item-speed.png" class="w-100" alt="RR88">
+                                        <div class="icon" style="position: relative;">
+                                            <img src="./assets/images/item-speed-2.png" class="w-100" alt="RR88">
+                                            <div class="speed-meter">--- ms</div>
                                         </div>
                                         </a>
                                          <a href="https://xx88j.com" target="_blank" class="btn bg-light fw-bold w-100 mt-2 btn-link">
@@ -191,6 +197,46 @@
 
             $(function () {
                 draggable();
+                // Hiệu ứng random số đo tốc độ nâng cao
+                var speedValues = [];
+                var bestIndexes = [0, 1]; // 2 item đầu là tốt nhất
+                var total = $('.speed-meter').length;
+                $('.speed-meter').each(function(i) {
+                    if (bestIndexes.includes(i)) {
+                        var val = Math.floor(Math.random() * 6) + 110; // 110-115
+                        speedValues[i] = val;
+                    } else {
+                        var val = Math.floor(Math.random() * 41) + 120; // 120-160
+                        speedValues[i] = val;
+                    }
+                    $(this).text(speedValues[i] + ' ms');
+                    $(this).attr('data-index', i);
+                });
+                function updateSpeedMeters() {
+                    $('.speed-meter').each(function(i) {
+                        if (bestIndexes.includes(i)) {
+                            // Nhảy rất ít, chỉ 1-2 đơn vị, giữ trong 110-115
+                            var delta = Math.floor(Math.random() * 2) + 1; // 1-2
+                            var up = Math.random() > 0.5;
+                            var val = speedValues[i];
+                            if (up) val = Math.min(115, val + delta);
+                            else val = Math.max(110, val - delta);
+                            speedValues[i] = val;
+                            $(this).text(val + ' ms');
+                        } else {
+                            // Nhảy 2-10 đơn vị, giữ trong 110-160
+                            var delta = Math.floor(Math.random() * 9) + 2; // 2-10
+                            var up = Math.random() > 0.5;
+                            var val = speedValues[i];
+                            if (up) val = Math.min(160, val + delta);
+                            else val = Math.max(110, val - delta);
+                            speedValues[i] = val;
+                            $(this).text(val + ' ms');
+                        }
+                    });
+                }
+                setInterval(updateSpeedMeters, 600);
+                updateSpeedMeters();
             });
         </script>
 
