@@ -606,3 +606,12 @@ a {
     max-width: 32vw;
   }
 }
+
+/* Mặc định ẩn domain mobile trên PC */
+.domain-mobile { display: none; }
+
+/* Khi ở màn hình nhỏ (điện thoại), ẩn domain desktop, hiện domain mobile */
+@media (max-width: 767px) {
+  .domain-desktop { display: none; }
+  .domain-mobile { display: block; }
+}
