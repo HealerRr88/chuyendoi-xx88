@@ -483,7 +483,7 @@ a {
 
 @media screen and (max-width: 370px) {
     .item-link {
-        width: 30%;
+        width: 100%;
     }
 }
 
@@ -530,7 +530,7 @@ a {
   pointer-events: auto;
   white-space: nowrap;
   text-decoration: none;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 8px;
   padding: 14px 50px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -542,7 +542,7 @@ a {
     min-width: unset;
     min-height: unset;
     padding: 0;
-    left: 50%;
+    left: 58%;
     top: 35%;
     transform: translate(-50%, -50%);
   }
